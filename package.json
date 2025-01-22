@@ -17,5 +17,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.2.1"
   }
 }
