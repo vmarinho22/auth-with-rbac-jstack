@@ -11,7 +11,7 @@ type Input = {
 
 type Output = void;
 
-export class SignUpUserCase {
+export class SignUpUseCase {
   async execute({ name, password, email }: Input): Promise<Output> {
     const accountAlreadyExists = await prismaClient.account.findUnique({
       where: { email },
