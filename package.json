@@ -17,6 +17,7 @@
     "typescript-eslint": "^8.21.0"
   },
   "author": "vmarinho22",
+  "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts"
   },

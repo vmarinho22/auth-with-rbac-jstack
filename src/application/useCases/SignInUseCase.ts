@@ -1,8 +1,8 @@
 import { env } from "../config/env";
 import { InvalidCredentials } from "../errors/InvalidCredentials";
 import { prismaClient } from "../libs/prismaClient";
-import { compare } from "bcryptjs";
-import { sign } from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 type Input = {
   email: string;
@@ -13,7 +13,7 @@ type Output = {
   accessToken: string;
 };
 
-export class SignInUserCase {
+export class SignInUseCase {
   async execute({ email, password }: Input): Promise<Output> {
     const account = await prismaClient.account.findUnique({
       where: { email },
@@ -23,13 +23,13 @@ export class SignInUserCase {
       throw new InvalidCredentials();
     }
 
-    const isPasswordCorrect = await compare(password, account.password);
+    const isPasswordCorrect = await bcrypt.compare(password, account.password);
 
     if (!isPasswordCorrect) {
       throw new InvalidCredentials();
     }
 
-    const accessToken = sign({ sub: account.id }, env.jwtSecret, {
+    const accessToken = jwt.sign({ sub: account.id }, env.jwtSecret, {
       expiresIn: "1d",
     });
 

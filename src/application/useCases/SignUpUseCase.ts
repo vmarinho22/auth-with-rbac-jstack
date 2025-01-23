@@ -1,7 +1,7 @@
 import { env } from "../config/env";
 import { AccountAlreadyExists } from "../errors/AccountAlreadyExists";
 import { prismaClient } from "../libs/prismaClient";
-import { hash } from "bcryptjs";
+import bcrypt from "bcryptjs";
 
 type Input = {
   name: string;
@@ -21,7 +21,7 @@ export class SignUpUseCase {
       throw new AccountAlreadyExists();
     }
 
-    const hashedPassword = await hash(password, env.passwordSalts);
+    const hashedPassword = await bcrypt.hash(password, env.passwordSalts);
 
     await prismaClient.account.create({
       data: {

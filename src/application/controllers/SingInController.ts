@@ -1,4 +1,4 @@
-import { SignInUserCase } from './../useCases/SignInUseCase';
+import { SignInUseCase } from './../useCases/SignInUseCase';
 import { z, ZodError } from "zod";
 import { IController, IRequest, IResponse } from "../interfaces/Controller";
 import { InvalidCredentials } from '../errors/InvalidCredentials';
@@ -9,7 +9,7 @@ const schema = z.object({
 });
 
 export class SignInController implements IController {
-  constructor(private readonly signInUseCase: SignInUserCase) {}
+  constructor(private readonly signInUseCase: SignInUseCase) {}
 
   async handle({ body }: IRequest): Promise<IResponse> {
     try {
