@@ -1,6 +1,7 @@
 import { z, ZodError } from "zod";
 import { IController, IRequest, IResponse } from "../interfaces/Controller";
 import { SignUpUseCase } from "../useCases/SignUpUseCase";
+import { AccountAlreadyExists } from "../errors/AccountAlreadyExists";
 
 const schema = z.object({
   name: z.string(),
@@ -28,7 +29,15 @@ export class SignUpController implements IController {
             message: error.issues,
           },
         };
+      }
 
+      if (error instanceof AccountAlreadyExists) {
+        return {
+          statusCode: 409,
+          body: {
+            error: "Account already exists",
+          },
+        };
       }
       throw error;
     }
