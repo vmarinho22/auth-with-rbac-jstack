@@ -19,7 +19,8 @@
   "author": "vmarinho22",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",
