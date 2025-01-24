@@ -1,6 +1,6 @@
-# Auth JStack
+# Auth + RBAC JStack
 
-Um projeto feito em uma das aulas do curso JStack, onde o objetivo é criar um sistema de autorização + autenticação usando o Node JS, utilizando todos os padrões recomendados para um projeto limpo, escalável e saudável.
+Um projeto feito em uma das aulas do curso JStack, onde o objetivo é criar um sistema de autorização + autenticação RBAC usando o Node JS, utilizando todos os padrões recomendados para um projeto limpo, escalável e saudável.
 
 Nesse projeto, iniciamos um pouco da arquitetura limpa (com algumas adaptações), usando use cases, factories, adapters e muitos outros pontos para um projeto escalável.
 

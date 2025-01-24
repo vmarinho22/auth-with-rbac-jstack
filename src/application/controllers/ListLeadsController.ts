@@ -1,11 +1,12 @@
-import { IController, IRequest, IResponse } from "../interfaces/Controller";
+import { IController, IResponse } from "../interfaces/Controller";
+import { IRequest } from "../interfaces/Request";
 
 export class ListLeadsController implements IController {
   async handle(request: IRequest): Promise<IResponse> {
     return {
       statusCode: 200,
       body: {
-        accountId: request.accountId,
+        accountId: request.account?.id,
         leads: [
           { id: 1, name: "Lead 1" },
           {
