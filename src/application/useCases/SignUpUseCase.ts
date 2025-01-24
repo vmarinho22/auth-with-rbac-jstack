@@ -1,3 +1,4 @@
+import { Role } from "@prisma/client";
 import { env } from "../config/env";
 import { AccountAlreadyExists } from "../errors/AccountAlreadyExists";
 import { prismaClient } from "../libs/prismaClient";
@@ -28,6 +29,7 @@ export class SignUpUseCase {
         name,
         email,
         password: hashedPassword,
+        role: Role.USER,
       },
     });
   }
